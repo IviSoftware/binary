@@ -4,7 +4,13 @@ let boton = document.getElementById('boton') /* Obtiene el boton */
 let result = document.getElementById('resultado')
 let contadorValidar=0;
 let valido;
+let opciones = document.options.option;
 
+
+function validarOpcion(){
+    let radiovalue=opciones.value;
+    return radiovalue;
+}
 
 function validar(vector)
 {
@@ -23,6 +29,7 @@ function validar(vector)
     `;
     }
 }
+
 
 
 function convertirBinario(binario)    /* Se crea una funcion para convertir esperando el numero como parametro*/
@@ -48,13 +55,23 @@ function convertirBinario(binario)    /* Se crea una funcion para convertir espe
 boton.addEventListener('click', () =>{   /* Escucha el evento al hacer click */
    
     let binarioUsuario = document.getElementById('txtBinario').value   /* Obtenemos el valor del input */
-  
-    validar(binarioUsuario)
-    if(valido==0)
-    {
-        convertirBinario(binarioUsuario) /* Invoca la funcion y le envia el numero */
-        
+    
+    switch(validarOpcion()){
+        case 'binario-a-decimal':
+
+            validar(binarioUsuario)
+            if(valido==0)
+            {
+                convertirBinario(binarioUsuario) /* Invoca la funcion y le envia el numero */
+                
+            }
+            break;
+
+        case 'hexa-a-binario' :
+            alert('hexa')
+            break;
     }
-   
+
+
 })
 
