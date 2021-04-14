@@ -30,7 +30,11 @@ function validar(vector)
     }
 }
 
-
+function mostrarResultado(resultado){
+    result.innerHTML = `
+    <p class="resultadoDecimal">El resultado en decimal es : ${resultado}<p>
+`;
+}
 
 function convertirBinario(binario)    /* Se crea una funcion para convertir esperando el numero como parametro*/
 {
@@ -44,13 +48,25 @@ function convertirBinario(binario)    /* Se crea una funcion para convertir espe
             acumulador = acumulador + multiplicacion; /* Los va sumando */
         } 
     );
-    
-    result.innerHTML = `
-        <p class="resultadoDecimal">El resultado en decimal es : ${acumulador}<p>
-    `;
+
+    mostrarResultado(acumulador)
+   
 }
 
+function convertirBinarioenHexadecimal(binario){
+    /* Binario a decimal*/
+    let binarioEnDecimal = parseInt(binario, 2); // La base es 2
+    let decimalEnHexadecimal = binarioEnDecimal.toString(16); // A la base 16
+    
+    mostrarResultado(decimalEnHexadecimal)
 
+}
+
+function convertirHexaEnBinario(hexa){
+    let hexaEnDecimal = parseInt(hexa,16)
+    let decimalEnBinario = hexaEnDecimal.toString(2); // A la base 2
+    mostrarResultado(decimalEnBinario);
+}
 
 boton.addEventListener('click', () =>{   /* Escucha el evento al hacer click */
    
@@ -67,8 +83,12 @@ boton.addEventListener('click', () =>{   /* Escucha el evento al hacer click */
             }
             break;
 
+        case 'binario-a-hexa' :
+            convertirBinarioenHexadecimal(binarioUsuario)
+            break;
+
         case 'hexa-a-binario' :
-            alert('hexa')
+            convertirHexaEnBinario(binarioUsuario);
             break;
     }
 
